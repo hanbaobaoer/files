@@ -1,0 +1,83 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=line-smooth&lang=js&code=PYBwLglsB2AEC8sDeAoWsAeBBDEDOAXMmurGAJ4gCmRA5AMYCGYVA5sAE7m0A0J6AE2aMiAbVq9YtACoBXKpNoB1KgMXSAFrMUAmAAw6AzLoMAWEzoCstALokAvn3Tkc-IqlJlKNKQDdGADbyvPywjLh4ADKMAEZUAe6hnp4AZpwAtswsHHRI_kFU9rAApLSh9g5OsHhUHBBUhLCioR7JQmAiTVYAdJaWPLA6AGzdAOz9sACMABzd05MDhqPdQxM6Ot16AJwDk1vdkwuDs6OTNlWeFNR0ARDQChekt_cAyhQBPq2e9MABnHQAYmmemBwNosAA9BDYIBwC0AY4qABwdAE5BgEFlQC2ioBt-MAbEqAY7lAIAe5Ue6ACsXiiWSyTwGmAAHciGAOPIBlDYIA-M0AXJ6AB1NADwKSWSIGAeAgkBgdDAoHBPBZPMAsvKAO39ADD_gHvlQCncoB6M1o4pAihiwDA4vSig-KTAijqrA0psAkt581IZLK1IgpWTQegi6AAChAjA4jHSeAAlMQKZ4OFQwLIOHBvb7_d18vJYABqKSlADc6BZgAp1TmAO2NAJ0OgEHTQCd8RyeYAYlUAfm6AMCVAO_KttIFRDsEcfLw6WAeo09MZVHKJDs9jTQA
+	⚠ 请注意，该图表不是 Apache ECharts 官方示例，而是由用户代码生成的。请注意鉴别其内容。
+-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://echarts.apache.org/zh/js/vendors/echarts-gl/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://echarts.apache.org/zh/js/vendors/echarts-stat/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-graph-modularity extension
+  <script type="text/javascript" src="https://echarts.apache.org/zh/js/vendors/echarts-graph-modularity/dist/echarts-graph-modularity.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    option = {
+  xAxis: {
+    type: 'category',
+    data: ['', 'Tue', 'Wed', 'Thu', '2023', '2024', '2025']
+  },
+  yAxis: {
+    type: 'value',
+    axisLabel: {
+            formatter: '{value} %'
+    }
+  },
+  series: [
+    {
+      data: [25.55, 26.75, 18.81, 37.65, 22.09, 19.11, 28.71],
+      type: 'line',
+      lineStyle: {
+      color: '#808080' // 标准灰色十六进制代码
+    },
+      label: {
+          show: true, // 显示数值
+          position: 'top' ,// 数值位置，可以是'top', 'bottom', 'left', 'right'等
+          formatter: function(params) {
+          return params.value + '%';  // 在数据点旁边显示数值和百分号
+          }
+        },
+      smooth: true
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
